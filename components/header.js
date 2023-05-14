@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FaSignInAlt,FaPenAlt } from "react-icons/fa";
+import Image from 'next/image'
+import { useSession, signOut } from "next-auth/react";
 
 export default function header(){
+  const { data } = useSession();
+
   return (
     <div>
       <header className="bg-gray-50">
@@ -19,9 +23,33 @@ export default function header(){
           </div>
           <div className="w-96 order-3 flex justify-center">
             <div className="flex gap-6">
-            <Link href={"/"}><FaPenAlt/>Write</Link>
-            <Link href={"/"}><FaSignInAlt/>Login</Link>
-            <Link href={"/"}> <FaSignOutAlt color="#88888888"/>Logout</Link>
+            <Image src={"/images/author/836.jpg"} width={60} height={60} className='rounded-full'>
+               {/* {data?.user ? (Hi, {data?.user?.name})} */}
+              </Image> 
+              <div className="col-3 mt-3 mt-md-0 text-center d-flex flex-row">
+          {data?.user ? (
+            <>
+              <span style={{ marginRight: "15px" }}>
+                Hi, {data?.user?.name}
+              </span>
+
+              <span style={{ cursor: "pointer" }} onClick={() => signOut()}>
+                {" "}
+                Logout
+              </span>
+            </>
+          ) : (
+            <span style={{ marginRight: "15px" }}>
+              {" "}
+              <Link className="nav-link" href="/login">
+                Login
+              </Link>
+            </span>
+          )}
+        </div>
+            <Link href={"/"} className="pt-2"><FaPenAlt/>Write</Link>
+            <Link href={"/login"} className="pt-2"><FaSignInAlt/>Login</Link>
+            <Link href={"/"} className="pt-2"> <FaSignOutAlt color="#88888888"/>Logout</Link>
             </div>
           </div>
         </div>

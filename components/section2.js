@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Author from './_child/author';
 
 const section2 = () => {
+    // getPost().then(res=>console.log(res))
   return (
     <section className='conatiner mx-auto md:px-20 py-10'>
         <h1 className='font-bold text-4xl py-12 text-center'>Latest Posts</h1>
