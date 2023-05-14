@@ -16,17 +16,49 @@ const [password, setPassword] = useState("");
 
 const submitHandler = async(e) => {
   e.preventDefault();
-  toast('Toast is good', { hideProgressBar: true, autoClose: 2000, type: 'success' })
+  
   try{
     const data = await signIn('credentials',{
       redirect:false,
       email,
       password
     })
-
+    console.log(data)
+    if(data.error==null){
+        toast.success('Login successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
     router.push('/');
+    }else if(data.error=='Invalid Email or password'){
+        // toast('error', { hideProgressBar: true, autoClose: 2000, type: 'success' })
+        toast.error('Invalid Email or password', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+    }
     // console.log(data)
   }catch(error){
+    // toast(, { hideProgressBar: true, autoClose: 2000, type: 'success' })
+    toast.error('Invalid Email or password', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     console.log(error)
   }
 };

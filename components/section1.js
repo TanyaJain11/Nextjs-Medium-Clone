@@ -8,11 +8,13 @@ import SwiperCore,{Autoplay} from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
+import { ToastContainer } from 'react-toastify';
 
 const section1 = () => {
     SwiperCore.use([Autoplay])
   return (
     <section className='py-16'>
+      
         <div className='container mx-auto mx:px-20'>
             <h1 className='font-bold text-4xl pb-12 text-center'>
              Trending

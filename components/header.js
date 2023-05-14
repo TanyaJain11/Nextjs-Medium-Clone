@@ -26,30 +26,33 @@ export default function header(){
             <Image src={"/images/author/836.jpg"} width={60} height={60} className='rounded-full'>
                {/* {data?.user ? (Hi, {data?.user?.name})} */}
               </Image> 
-              <div className="col-3 mt-3 mt-md-0 text-center d-flex flex-row">
+              {/* <div className="col-3 mt-3 mt-md-0 text-center d-flex flex-row"> */}
           {data?.user ? (
             <>
-              <span style={{ marginRight: "15px" }}>
+            
+              <span style={{ marginRight: "15px" }} className="pt-4">
                 Hi, {data?.user?.name}
               </span>
 
-              <span style={{ cursor: "pointer" }} onClick={() => signOut()}>
+              {/* <span style={{ cursor: "pointer" }} onClick={() => signOut()}>
                 {" "}
                 Logout
-              </span>
+              </span> */}
+               <div className="pt-2"  onClick={() => signOut()}> <FaSignOutAlt color="#88888888"/>Logout</div>
             </>
           ) : (
-            <span style={{ marginRight: "15px" }}>
-              {" "}
-              <Link className="nav-link" href="/login">
-                Login
-              </Link>
-            </span>
-          )}
-        </div>
-            <Link href={"/"} className="pt-2"><FaPenAlt/>Write</Link>
+            // <span style={{ marginRight: "15px" }}>
+            //   {" "}
+            //   <Link className="nav-link" href="/login">
+            //     Login
+            //   </Link>
+            // </span>
             <Link href={"/login"} className="pt-2"><FaSignInAlt/>Login</Link>
-            <Link href={"/"} className="pt-2"> <FaSignOutAlt color="#88888888"/>Logout</Link>
+          )}
+        {/* </div> */}
+            <Link href={"/"} className="pt-2"><FaPenAlt/>Write</Link>
+            {/* <Link href={"/login"} className="pt-2"><FaSignInAlt/>Login</Link> */}
+            {/* <Link href={"/"} className="pt-2"> <FaSignOutAlt color="#88888888"/>Logout</Link> */}
             </div>
           </div>
         </div>
