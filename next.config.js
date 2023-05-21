@@ -6,7 +6,9 @@ const nextConfig = {
   },
   env:{
     DB_URI:'mongodb://localhost:27017/nextAuth',
-    AUTH_SECRET:"tanyaaJain"
+    AUTH_SECRET:"tanyaaJain",
+    NEXTAUTH_SECRET:"hemlo",
+    NEXTAUTH_URL:'http://localhost:3000'
   }
 };
 

@@ -50,7 +50,7 @@ export default function header(){
             <Link href={"/login"} className="pt-2"><FaSignInAlt/>Login</Link>
           )}
         {/* </div> */}
-            <Link href={"/"} className="pt-2"><FaPenAlt/>Write</Link>
+            <Link href={"/write"} className="pt-2"><FaPenAlt/>Write</Link>
             {/* <Link href={"/login"} className="pt-2"><FaSignInAlt/>Login</Link> */}
             {/* <Link href={"/"} className="pt-2"> <FaSignOutAlt color="#88888888"/>Logout</Link> */}
             </div>
