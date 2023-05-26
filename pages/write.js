@@ -11,8 +11,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import axios from 'axios';
+import { useSession, signOut, SessionProvider } from "next-auth/react";
 
 const write = () => {
+  const { data} = useSession();
+  const user = data?.user;
+
+     console.log("ddddddddddaaaa",user?.name)
+
+    // console.log("dataaa",data.user.name);
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [category, setCategory] = useState("");
@@ -24,6 +31,7 @@ const write = () => {
   const [authorDesignation, setAuthorDesignation] = useState("");
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     console.log("write",image)
     const formData = {
@@ -34,7 +42,8 @@ const write = () => {
       description,
       published,
       author: {
-        name: authorName,
+        name: user?.name,
+        email: user?.email,
         img: authorImage,
         designation: authorDesignation,
       },
@@ -109,6 +118,7 @@ const write = () => {
     
   return (
     
+  // <SessionProvider>
     <div className='grid h-screen place-items-center mx-12'>
       <ToastContainer/>
 
@@ -183,7 +193,7 @@ const write = () => {
               className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
               id='grid-name'
               type='text'
-              placeholder='Name'
+              placeholder={user?.name}
               name='name'
               value={authorName}
           onChange={(e) => setAuthorName(e.target.value)}
@@ -233,6 +243,7 @@ onChange={(e) => setAuthorDesignation(e.target.value)}
 </form>
 
 </div>
+//  </SessionProvider>
 
   )
 }

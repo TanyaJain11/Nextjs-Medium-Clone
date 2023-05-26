@@ -67,7 +67,7 @@ export default async function handler(req, res) {
     const db = client.db('nextAuth'); // Replace 'DB_NAME' with your actual database name
 
     // Access the "trendingBlogs" collection
-    const collection = db.collection('trending Blogs');
+    const collection = db.collection('blogs');
 
     // Fetch the trending posts
     const trendingPosts = await collection.find({}).toArray();
@@ -76,9 +76,21 @@ export default async function handler(req, res) {
     await client.close();
 
     // Return the trending posts as the API response
-    res.status(200).json(trendingPosts);
+    const  data  = trendingPosts;
+    // console.log(trendingPosts)
+    if(data) return res.status(200).json(data)
   } catch (error) {
     console.error('Error fetching trending posts:', error);
     res.status(500).json({ message: 'Error fetching trending posts' });
   }
 }
+
+
+// import data from './data'
+
+// // api/trending
+// export default function handler(req, res){
+//     const { Trending } = data;
+//     if(Trending) return res.status(200).json(Trending)
+//     return res.status(404).json({ error: "Data Not Found"})
+// }

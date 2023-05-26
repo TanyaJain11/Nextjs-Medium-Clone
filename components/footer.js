@@ -4,7 +4,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { FaSignInAlt,FaPenAlt } from "react-icons/fa";
 import  Newsletter from './_child/newsletter'
 
-const footer = () => {
+const Footer = () => {
   return (
     <footer className='bg-gray-50'>
         <Newsletter></Newsletter>
@@ -23,4 +23,4 @@ const footer = () => {
   )
 }
 
-export default footer
+export default Footer

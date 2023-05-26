@@ -1,225 +1,159 @@
-// // import React from 'react'
-// // import Image from 'next/image'
-// // import Link from 'next/link'
-// // import Author from './_child/author'
-// // // Import Swiper React components
-// // import { Swiper, SwiperSlide } from 'swiper/react';
-// // import SwiperCore,{Autoplay} from 'swiper';
-
-// // // Import Swiper styles
-// // import 'swiper/css';
-// // import { ToastContainer } from 'react-toastify';
-
-// // const section1 = () => {
-// //     SwiperCore.use([Autoplay])
-// //   return (
-// //     <section className='py-16'>
-      
-// //         <div className='container mx-auto mx:px-20'>
-// //             <h1 className='font-bold text-4xl pb-12 text-center'>
-// //              Trending
-// //             </h1>
-// //             <Swiper
-// //             loop={true}
-// //       slidesPerView={1}
-// //       autoplay={{
-// //         delay:3000
-// //       }}
-// //     >
-// //       <SwiperSlide> {Slide()}</SwiperSlide>
-// //       <SwiperSlide> {Slide()}</SwiperSlide>
-// //       <SwiperSlide> {Slide()}</SwiperSlide>
-// //       <SwiperSlide> {Slide()}</SwiperSlide>
-// //     </Swiper>
-           
-// //         </div>
-
-// //     </section>
-// //   )
-// // }
-
-// // export default section1
-
-// // function Slide(){
-// //     return(
-// //         <div className='grid md:grid-cols-2'>
-// //             <div className="image">
-// //                 <Link href={"/"}>
-// //                 <Image src={"/images/1im.jpg"} width={600} height={600}/></Link>
-// //             </div>
-// //             <div className='info flex justify-center flex-col'>
-// //                 <div className='cat'>
-// //                     <Link href={"/"} className='text-orange-300 hover:text-orange-300'>wertyujikl</Link>
-// //                     <Link href={"/"} className='text-orange-300 hover:text-orange-300'>--october 2023</Link>
-// //                 </div>
-// //                 <div className='title'>
-// //                         <Link href={"/"} className='text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600'> Elit fugiat cupidatat veniam reprehenderit exercitation fugiat amet.
-// //                         </Link>
-// //                 </div>
-// //                 <p className='text-gray-500 py-3'>Ullamco laborum amet esse labore in nisi anim.</p>
-// //                 <Author ></Author>
-// //             </div>
-// //         </div>
-// //     )
-// // }
-
-
-// import React, { useEffect, useState } from 'react';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import Author from './_child/author';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import SwiperCore, { Autoplay } from 'swiper';
-// import 'swiper/css';
-// import { ToastContainer } from 'react-toastify';
-
-// SwiperCore.use([Autoplay]);
-
-// const Section1 = () => {
-//   const [trendingBlogs, setTrendingBlogs] = useState([]);
-
-//   useEffect(() => {
-//     fetchTrendingBlogs();
-//   }, []);
-
-//   const fetchTrendingBlogs = async () => {
-//     try {
-//       const response = await fetch('/api/trendingPosts');
-//       const data = await response.json();
-//       setTrendingBlogs(data);
-//       console.log(trendingBlogs)
-//     } catch (error) {
-//       console.error('Error fetching trending blogs:', error);
-//     }
-//   };
-
-//   return (
-//     <section className='py-16'>
-//       <div className='container mx-auto mx:px-20'>
-//         <h1 className='font-bold text-4xl pb-12 text-center'>Trending</h1>
-//         <Swiper loop={true} slidesPerView={1} autoplay={{ delay: 3000 }}>
-//           {trendingBlogs.map((blog) => (
-//             <SwiperSlide key={blog._id}>{Slide(blog)}</SwiperSlide>
-//           ))}
-//         </Swiper>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Section1;
-
-// function Slide(blog) {
-//   return (
-//     <div className='grid md:grid-cols-2'>
-//       <div className='image'>
-//         <Link href={'/'}>
-//           <Image src={'/images/1im.jpg'} width={600} height={600} />
-//         </Link>
-//       </div>
-//       <div className='info flex justify-center flex-col'>
-//         <div className='cat'>
-//           <Link href={'/'} className='text-orange-300 hover:text-orange-300'>
-//             {blog.category}
-//           </Link>
-//           <Link
-//             href={'/'}
-//             className='text-orange-300 hover:text-orange-300'
-//           >
-//             {blog.date}
-//           </Link>
-//         </div>
-//         <div className='title'>
-//           <Link
-//             href={'/'}
-//             className='text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600'
-//           >
-//             {blog.title}
-//           </Link>
-//         </div>
-//         <p className='text-gray-500 py-3'>{blog.description}</p>
-//         <Author />
-//       </div>
-//     </div>
-//   );
-// }
-
-
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import Author from './_child/author';
+import Image from "next/image"
+import Link from "next/link"
+import Author from "./_child/author"
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
+// Import Swiper styles
 import 'swiper/css';
-import { ToastContainer } from 'react-toastify';
+import fetcher from '../lib/fetcher'
+import Spinner from "./_child/spinner"
+import Error from "./_child/error"
+import { useState ,useEffect} from 'react';
 
-SwiperCore.use([Autoplay]);
 
-const Section1 = () => {
-  const [trendingBlogs, setTrendingBlogs] = useState([]);
+// export default function section1() {
+
+//     const { data, isLoading, isError } = fetcher('api/trendingPosts')
+    
+//     if(isLoading) return <Spinner></Spinner>;
+//     if(isError) return <Error></Error>
+
+//     SwiperCore.use([Autoplay])
+
+//     const bg = {
+//         background: "url('/images/banner.png') no-repeat",
+//         backgroundPosition: "right"
+//     }
+
+//   return (
+//     <section className="py-16" style={bg}>
+//         <div className="container mx-auto md:px-20">
+//             <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
+
+//             <Swiper
+//                 slidesPerView={1}
+//                 // loop={true}
+//                 // autoplay= {{
+//                 //     delay: 2000
+//                 // }}
+//                 >
+//                 {
+//                     data.map((value, index) => (
+//                         <SwiperSlide key={index}><Slide data={value}></Slide></SwiperSlide>
+//                     ))
+//                 }
+//             ...
+//             </Swiper>
+
+            
+//         </div>
+//     </section>
+//   )
+// }
+
+// function Slide({ data }){
+
+//     const { id, title, category, img, published, description ,author } = data;
+
+//     return (
+//         <div className="grid md:grid-cols-2">
+//             <div className="image">
+//                 <Link href={`/posts/${id}`}><Image src={img || "/"} width={600} height={600} /></Link>
+//             </div>
+//             <div className="info flex justify-center flex-col">
+//                 <div className="cat">
+//                     <Link href={`/posts/${id}`} className="text-orange-600 hover:text-orange-800">{category || "Unknown"}</Link>
+//                     <Link href={`/posts/${id}`} className="text-gray-800 hover:text-gray-600">- {published || "Unknown"}</Link>
+//                 </div>
+//                 <div className="title">
+//                     <Link href={`/posts/${id}`} className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">{title || "Unknown"}</Link>
+//                 </div>
+//                 <p className="text-gray-500 py-3">
+//                     {description || "description"}
+//                 </p>
+//                 { author ? <Author></Author> : <></>}
+//             </div>
+//         </div>
+//     )
+// }
+
+// import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+export default function Section1() {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetchTrendingBlogs();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/trendingPosts');
+        setData(response.data);
+      } catch (error) {
+        setIsError(true);
+        console.error('Error fetching trending posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const fetchTrendingBlogs = async () => {
-    try {
-      const response = await fetch('/api/trendingPosts');
-      const data = await response.json();
-      setTrendingBlogs(data);
-      console.log(trendingBlogs);
-    } catch (error) {
-      console.error('Error fetching trending blogs:', error);
-    }
-  };
+  if (isLoading) return <Spinner />;
+  if (isError) return <Error />;
 
   return (
-    <section className='py-16'>
-      <div className='container mx-auto mx:px-20'>
-        <h1 className='font-bold text-4xl pb-12 text-center'>Trending</h1>
-        <Swiper loop={true} slidesPerView={1} autoplay={{ delay: 3000 }}>
-          {trendingBlogs.map((blog) => (
-            <SwiperSlide key={blog._id}>{Slide(blog)}</SwiperSlide>
+    <section className="py-16">
+      <div className="container mx-auto md:px-20">
+        <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
+
+        <Swiper
+          slidesPerView={1}
+          autoplay={{
+            delay: 2000
+          }}
+        >
+          {data.map((value, index) => (
+            <SwiperSlide key={index}>
+              <Slide data={value} />
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
     </section>
   );
-};
+}
 
-export default Section1;
-
-function Slide(blog) {
+function Slide({ data }) {
+  console.log("daaaaaaaaaaaa",data);
+  const { _id, title, category, img, published, description, author } = data;
+console.log("idddddddd",_id);
   return (
-    <div className='grid md:grid-cols-2'>
-      <div className='image'>
-        <Link href={'/'}>
-          <Image src={'/images/1im.jpg'} width={600} height={600} />
+    <div className="grid md:grid-cols-2">
+      <div className="image">
+        <Link href={`/posts/${_id}`}>
+          <Image src={img || '/'} width={600} height={600} />
         </Link>
       </div>
-      <div className='info flex justify-center flex-col'>
-        <div className='cat'>
-          <Link href={'/'} className='text-orange-300 hover:text-orange-300'>
-            {blog.category}
+      <div className="info flex justify-center flex-col">
+        <div className="cat">
+          <Link href={`/posts/${_id}`} className="text-orange-600 hover:text-orange-800">
+            {category || 'Unknown'}
           </Link>
-          <Link
-            href={'/'}
-            className='text-orange-300 hover:text-orange-300'
-          >
-            {blog.date}
+          <Link href={`/posts/${_id}`} className="text-gray-800 hover:text-gray-600">
+            - {published || 'Unknown'}
           </Link>
         </div>
-        <div className='title'>
-          <Link
-            href={'/'}
-            className='text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600'
-          >
-            {blog.title}
+        <div className="title">
+          <Link href={`/posts/${_id}`} className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">
+            {title || 'Unknown'}
           </Link>
         </div>
-        <p className='text-gray-500 py-3'>{blog.description}</p>
-        <Author />
+        <p className="text-gray-500 py-3">{description || 'description'}</p>
+        {author ? <Author /> : <></>}
       </div>
     </div>
   );

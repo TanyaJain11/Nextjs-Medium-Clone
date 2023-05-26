@@ -6,6 +6,8 @@ import { useSession, signOut } from "next-auth/react";
 
 export default function header(){
   const { data } = useSession();
+  console.log(data)
+ 
 
   return (
     <div>
@@ -17,8 +19,9 @@ export default function header(){
             rounded-full text-sm shadow-sm placehoder-late-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" placeholder="Search..."/>
           </div>
           <div className="shrink w-80 sm:order-2">
-            <Link href={"/"} className="font-bold uppercase -3xl">Design
+            <Link href={"/"} className="font-bold uppercase -3xl">Idea<span className="text-blue-600 ">Nex</span>
             </Link>
+            <p className="text-orange-500">where ideas connect</p>
             
           </div>
           <div className="w-96 order-3 flex justify-center">
@@ -31,7 +34,9 @@ export default function header(){
             <>
             
               <span style={{ marginRight: "15px" }} className="pt-4">
-                Hi, {data?.user?.name}
+              <Link href="/profile">
+                  Hi, {data?.user?.name}
+              </Link>
               </span>
 
               {/* <span style={{ cursor: "pointer" }} onClick={() => signOut()}>
