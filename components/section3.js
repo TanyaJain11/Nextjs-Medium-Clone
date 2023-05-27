@@ -1,6 +1,6 @@
 // import { Swiper, SwiperSlide } from "swiper/react"
 // import Link from "next/link"
-// import Image from "next/image"
+// import img from "next/img"
 // import Author from "./_child/author"
 // import fetcher from '../lib/fetcher'
 // import Spinner from "./_child/spinner"
@@ -44,8 +44,8 @@
 
 //     return (
 //         <div className="grid">
-//             <div className="images">
-//                 <Link href={`/posts/${id}`}><Image src={img || ""} width={600} height={400} /></Link>
+//             <div className="imgs">
+//                 <Link href={`/posts/${id}`}><img src={img || ""} width={600} height={400} /></Link>
 //             </div>
 //             <div className="info flex justify-center flex-col py-4">
 //                 <div className="cat">
@@ -117,7 +117,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
-import Image from 'next/image';
+
 import Author from './_child/author';
 import Spinner from './_child/spinner';
 import Error from './_child/error';
@@ -171,13 +171,13 @@ export default function Section3() {
 
 function Post({ data }) {
     // console.log("dddddddddddd",data);
-  const { _id, title, category, img, description, published, author } = data;
+  const { _id, title, category, image, description, published, author } = data;
 
   return (
     <div className="grid">
-      <div className="images">
+      <div className="imgs">
         <Link href={`/posts/${_id}`}>
-          <Image src={img || ''} width={600} height={400} />
+          <img src={image || ''} width={600} height={400} />
         </Link>
       </div>
       <div className="info flex justify-center flex-col py-4">
@@ -195,7 +195,7 @@ function Post({ data }) {
           </Link>
         </div>
         <p className="text-gray-500 py-3">{description || 'No Description'}</p>
-        {author ? <Author /> : <></>}
+        {author ? <Author {...author} /> : <></>}
       </div>
     </div>
   );

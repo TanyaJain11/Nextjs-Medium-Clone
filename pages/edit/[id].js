@@ -14,11 +14,11 @@
 //   const [title, setTitle] = useState('');
 //   const [subtitle, setSubtitle] = useState('');
 //   const [category, setCategory] = useState('');
-//   const [image, setImage] = useState('');
+//   const [img, setimg] = useState('');
 //   const [description, setDescription] = useState('');
 //   const [published, setPublished] = useState('');
 //   const [authorName, setAuthorName] = useState('');
-//   const [authorImage, setAuthorImage] = useState('');
+//   const [authorimg, setAuthorimg] = useState('');
 //   const [authorDesignation, setAuthorDesignation] = useState('');
 
 //   useEffect(() => {
@@ -29,11 +29,11 @@
 //         setTitle(blogPost.title);
 //         setSubtitle(blogPost.subtitle);
 //         setCategory(blogPost.category);
-//         setImage(blogPost.image);
+//         setimg(blogPost.img);
 //         setDescription(blogPost.description);
 //         setPublished(blogPost.published);
 //         setAuthorName(blogPost.author.name);
-//         setAuthorImage(blogPost.author.img);
+//         setAuthorimg(blogPost.author.img);
 //         setAuthorDesignation(blogPost.author.designation);
 //       } catch (error) {
 //         console.error('Error fetching blog post:', error);
@@ -52,13 +52,13 @@
 //       title,
 //       subtitle,
 //       category,
-//       image,
+//       img,
 //       description,
 //       published,
 //       author: {
 //         name: user?.name,
 //         email: user?.email,
-//         img: authorImage,
+//         img: authorimg,
 //         designation: authorDesignation,
 //       },
 //     };
@@ -149,11 +149,11 @@ const Edit = () => {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [category, setCategory] = useState('');
-  const [image, setImage] = useState('');
+  const [img, setimg] = useState('');
   const [description, setDescription] = useState('');
   const [published, setPublished] = useState('');
   const [authorName, setAuthorName] = useState('');
-  const [authorImage, setAuthorImage] = useState('');
+  const [authorimg, setAuthorimg] = useState('');
   const [authorDesignation, setAuthorDesignation] = useState('');
 
   useEffect(() => {
@@ -164,11 +164,11 @@ const Edit = () => {
         setTitle(blogPost.title);
         setSubtitle(blogPost.subtitle);
         setCategory(blogPost.category);
-        setImage(blogPost.image);
+        setimg(blogPost.img);
         setDescription(blogPost.description);
         setPublished(blogPost.published);
         setAuthorName(blogPost.author.name);
-        setAuthorImage(blogPost.author.img);
+        setAuthorimg(blogPost.author.img);
         setAuthorDesignation(blogPost.author.designation);
       } catch (error) {
         console.error('Error fetching blog post:', error);
@@ -187,13 +187,13 @@ const Edit = () => {
       title,
       subtitle,
       category,
-      image,
+      img,
       description,
       published,
       author: {
         name: user?.name,
         email: user?.email,
-        img: authorImage,
+        img: authorimg,
         designation: authorDesignation,
       },
     };
@@ -267,17 +267,17 @@ const Edit = () => {
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-image">
-              Image URL
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-img">
+              img URL
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-              id="grid-image"
-              name="image"
+              id="grid-img"
+              name="img"
               type="text"
-              placeholder="Image URL"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
+              placeholder="img URL"
+              value={img}
+              onChange={(e) => setimg(e.target.value)}
             />
           </div>
         </div>
@@ -332,17 +332,17 @@ const Edit = () => {
 
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-author-image">
-              Author Image URL
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-author-img">
+              Author img URL
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-author-image"
-              name="authorImage"
+              id="grid-author-img"
+              name="authorimg"
               type="text"
-              placeholder="Author Image URL"
-              value={authorImage}
-              onChange={(e) => setAuthorImage(e.target.value)}
+              placeholder="Author img URL"
+              value={authorimg}
+              onChange={(e) => setAuthorimg(e.target.value)}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">

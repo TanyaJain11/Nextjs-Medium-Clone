@@ -1,6 +1,6 @@
 // import Format from '../../layout/format'
 // import Author from '../../components/_child/author'
-// import Image from 'next/image'
+//
 // import Ralated from '../../components/_child/ralated'
 // import getPost from '../../lib/helper'
 // import fetcher from '../../lib/fetcher';
@@ -41,7 +41,7 @@
 //                     <p className='text-gray-500 text-xl text-center'>{subtitle || "No Title"}</p>
 
 //                     <div className="py-10">
-//                         <Image src={img || "/"} width={900} height={600}></Image>
+//                         <img src={img || "/"} width={900} height={600}></img>
 //                     </div>
 
 //                     <div className="content text-gray-600 text-lg flex flex-col gap-4">
@@ -91,7 +91,7 @@ import axios from 'axios';
 
 import Format from '../../layout/format';
 import Author from '../../components/_child/author';
-import Image from 'next/image';
+
 import Ralated from '../../components/_child/ralated';
 
 export default function Post() {
@@ -108,6 +108,7 @@ export default function Post() {
 
     const fetchPost = async () => {
       try {
+       
         const response = await axios.get(`/api/posts/${postId}`);
         const post = response.data;
 
@@ -132,7 +133,7 @@ export default function Post() {
     return <div>{error}</div>;
   }
 
-  const { title, img, subtitle, description, author } = post || {};
+  const { title, category,image, subtitle, description, author } = post || {};
 
   return (
     <Format>
@@ -147,7 +148,7 @@ export default function Post() {
           <p className="text-gray-500 text-xl text-center">{subtitle || "No Title"}</p>
 
           <div className="py-10">
-            <Image src={img || "/"} width={900} height={600} />
+            <img src={image || "/"} width={900} height={600} />
           </div>
 
           <div className="content text-gray-600 text-lg flex flex-col gap-4">
@@ -155,7 +156,7 @@ export default function Post() {
           </div>
         </div>
 
-        <Ralated />
+        <Ralated {...post}/>
       </section>
     </Format>
   );

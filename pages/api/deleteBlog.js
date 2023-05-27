@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     await dbConnect();
     const client = new MongoClient(process.env.DB_URI);
     await client.connect();
-    const db = client.db('nextAuth'); // Replace 'DB_NAME' with your actual database name
+    const db = client.db('IdeaNex'); // Replace 'DB_NAME' with your actual database name
 
     // Delete the blog from the "blogs" collection
     const result = await db.collection('blogs').findOneAndDelete({ _id: new ObjectId(id) });

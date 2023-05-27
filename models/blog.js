@@ -6,7 +6,7 @@
 //   title: String,
 //   subtitle: String,
 //   category: String,
-// //   image: String,
+// //   img: String,
 //   description: String,
 //   published: {
 //     type: Date,
@@ -23,7 +23,7 @@
 // //   },
 // author: {
 //    name: { type: String },
-//     image: { type: String },
+//     img: { type: String },
 //     designation: { type: String }
 //   }
 
@@ -39,7 +39,7 @@ const blogSchema = new Schema({
   title: String,
   subtitle: String,
   category: String,
-  image:String,
+  img:String,
   description: String,
   published: {
     type: Date,
@@ -67,7 +67,7 @@ export default mongoose.models.Blog || mongoose.model("Blog", blogSchema);
 //   title: String,
 //   subtitle: String,
 //   category: String,
-//   image: String,
+//   img: String,
 //   description: String,
 //   published: {
 //     type: Date,

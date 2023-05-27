@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+
 import Author from './author'
 
 
@@ -22,9 +22,9 @@ export default related
 function Post(){
     return (
         <div className='flex gap-5'>
-            <div className='image flex flex-col justify-start'>
+            <div className='img flex flex-col justify-start'>
             <Link href={"/"}>
-                <Image src={"/images/hack.jpg"} width={300} height={200} className="rounded"/></Link>
+                <img src={"/imgs/hack.jpg"} width={300} height={200} className="rounded"/></Link>
             </div>
             <div className='info flex justify-center flex-col'>
             <div className='cat'>

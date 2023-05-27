@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import Image from 'next/image';
+import Format from '../layout/format'
+
 import Layout from '../layout/layout';
 
 export default function Profile() {
@@ -64,6 +65,7 @@ export default function Profile() {
   }
 
   return (
+    <Format>
     <div className="max-w-3xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Profile Page</h1>
       <h2 className="text-xl font-bold mb-2">Welcome, {sessionData.user.name}</h2>
@@ -77,7 +79,7 @@ export default function Profile() {
               <h4 className="text-xl font-bold mb-2">{blog.title}</h4>
               <p className="text-gray-600 mb-4">{blog.subtitle}</p>
               <div className="relative aspect-w-16 aspect-h-9">
-                <Image src={blog.img} layout="fill" objectFit="cover" className="rounded-lg" />
+                <img src={blog.img} layout="fill" objectFit="cover" className="rounded-lg" />
               </div>
               <div className="text-gray-600 mt-4">{blog.description}</div>
               <div className="mt-6 flex justify-end">
@@ -100,5 +102,6 @@ export default function Profile() {
         <p>No blogs found.</p>
       )}
     </div>
+    </Format>
   );
 }

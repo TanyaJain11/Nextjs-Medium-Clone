@@ -17,7 +17,7 @@ const { id } = req.query;
   const updatedPostData = req.body;
   const client = new MongoClient(process.env.DB_URI);
     await client.connect();
-    const db = client.db('nextAuth');
+    const db = client.db('IdeaNex');
 
   try {
     // Update the blog post in the "blogs" collection

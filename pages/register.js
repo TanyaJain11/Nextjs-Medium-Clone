@@ -10,6 +10,8 @@ export default function Register(){
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+
   
     const submitHandler = async(e) => {
       e.preventDefault();
@@ -67,7 +69,6 @@ export default function Register(){
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-
                 {/* login buttons */}
                 <div className="input-button">
                     <button type='submit'>

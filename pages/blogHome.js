@@ -16,9 +16,9 @@ const Home = () => {
               Get Started
             </button>
           </div>
-          <div className="hero-image">
+          <div className="hero-img">
             <img
-              src="path/to/hero-image.jpg"
+              src="path/to/hero-img.jpg"
               alt="Hero"
               className="max-w-full h-auto rounded"
             />

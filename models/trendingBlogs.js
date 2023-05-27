@@ -6,7 +6,7 @@ const trendingBlogSchema = new Schema({
   title: String,
   subtitle: String,
   category: String,
-  image:String,
+  img:String,
   description: String,
   published: {
     type: Date,

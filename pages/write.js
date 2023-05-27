@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { useSession, signOut, SessionProvider } from "next-auth/react";
-
+import Format from '../layout/format'
 const write = () => {
   const { data} = useSession();
   const user = data?.user;
@@ -23,28 +23,28 @@ const write = () => {
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
   const [category, setCategory] = useState("");
-  const [image, setImage] = useState("");
+  const [img, setimg] = useState("");
   const [description, setDescription] = useState("");
   const [published, setPublished] = useState("");
   const [authorName, setAuthorName] = useState("");
-  const [authorImage, setAuthorImage] = useState("");
+  const [authorimg, setAuthorimg] = useState("");
   const [authorDesignation, setAuthorDesignation] = useState("");
 
   const handleSubmit = async (e) => {
     
     e.preventDefault();
-    console.log("write",image)
+    console.log("write",img)
     const formData = {
       title,
       subtitle,
       category,
-      image,
+      img,
       description,
       published,
       author: {
         name: user?.name,
         email: user?.email,
-        img: authorImage,
+        img: authorimg,
         designation: authorDesignation,
       },
     };
@@ -69,11 +69,11 @@ const write = () => {
     setTitle("");
     setSubtitle("");
     setCategory("");
-    setImage("");
+    setimg("");
     setDescription("");
     setPublished("");
     setAuthorName("");
-    setAuthorImage("");
+    setAuthorimg("");
     setAuthorDesignation("");
   };
 
@@ -84,14 +84,14 @@ const write = () => {
     data.append("upload_preset", "blogs_medium")
     // data.append("cloud_name", "dklbu3ywu")
 
-    const response = await fetch("https://api.cloudinary.com/v1_1/codergirll/image/upload", {
+    const response = await fetch("https://api.cloudinary.com/v1_1/codergirll/img/upload", {
       method: "post",
       body: data,
       mode: 'cors'
     }).then((res) => {
       return res.json()
     }).then((data) => {
-      setImage(data.url)
+      setimg(data.url)
       console.log("")
     })
     console.log("write",response)
@@ -103,22 +103,22 @@ const write = () => {
     data.append("upload_preset", "blogs_medium")
     // data.append("cloud_name", "dklbu3ywu")
 
-    const response = await fetch("https://api.cloudinary.com/v1_1/codergirll/image/upload", {
+    const response = await fetch("https://api.cloudinary.com/v1_1/codergirll/img/upload", {
       method: "post",
       body: data,
       mode: 'cors'
     }).then((res) => {
       return res.json()
     }).then((data) => {
-      setAuthorImage(data.url)
+      setAuthorimg(data.url)
       console.log("")
     })
     console.log(response)
   }
     
   return (
-    
-  // <SessionProvider>
+ 
+  <Format>
     <div className='grid h-screen place-items-center mx-12'>
       <ToastContainer/>
 
@@ -158,11 +158,11 @@ const write = () => {
       
     </div>
     <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-image">
-        Image
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-img">
+        img
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-image"
-       type="file" placeholder="image"
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-img"
+       type="file" placeholder="img"
        onChange={(e) => handleImg(e.target.files)} />
     {/* //    value={password}
     //    onChange={(e) => setPassword(e.target.value)}/> */}
@@ -204,14 +204,14 @@ const write = () => {
               className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
               htmlFor='grid-img'
             >
-              Image
+              img
             </label>
             <input
               className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
               id='grid-img'
-              name='image'
+              name='img'
               type='file'
-              placeholder='Image'
+              placeholder='img'
               onChange={(e) => handleAuthorImg(e.target.files)} />
            
           </div>
@@ -243,7 +243,7 @@ onChange={(e) => setAuthorDesignation(e.target.value)}
 </form>
 
 </div>
-//  </SessionProvider>
+</Format>
 
   )
 }

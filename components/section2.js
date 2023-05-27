@@ -1,5 +1,5 @@
 // import Link from "next/link"
-// import Image from "next/image"
+// import img from "next/img"
 // import Author from "./_child/author"
 // import fetcher from '../lib/fetcher'
 // import Spinner from "./_child/spinner"
@@ -33,8 +33,8 @@
 //     const { id, title, category,description, img, published, author } = data;
 //     return (
 //         <div className="item">
-//             <div className="images">
-//                 <Link href={`/posts/${id}`}><Image src={img || "/"} className="rounded" width={500} height={350} /></Link>
+//             <div className="imgs">
+//                 <Link href={`/posts/${id}`}><img src={img || "/"} className="rounded" width={500} height={350} /></Link>
 //             </div>
 //             <div className="info flex justify-center flex-col py-4">
 //                 <div className="cat">
@@ -58,7 +58,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+
 import Author from './_child/author';
 import axios from 'axios';
 import Spinner from './_child/spinner';
@@ -103,12 +103,12 @@ export default function Section2() {
 }
 
 function Post({ data }) {
-  const { _id, title, category, description, img, published, author } = data;
+  const { _id, title, category, description, image, published, author } = data;
   return (
     <div className="item">
-      <div className="images">
+      <div className="imgs">
         <Link href={`/posts/${_id}`}>
-          <Image src={img || '/'} className="rounded" width={500} height={350} />
+          <img src={image || '/'} className="rounded" width={500} height={350} />
         </Link>
       </div>
       <div className="info flex justify-center flex-col py-4">
@@ -126,7 +126,7 @@ function Post({ data }) {
           </Link>
         </div>
         <p className="text-gray-500 py-3">{description || 'Unknown'}</p>
-        {author ? <Author /> : <></>}
+        {author ? <Author {...author} /> : <></>}
       </div>
     </div>
   );

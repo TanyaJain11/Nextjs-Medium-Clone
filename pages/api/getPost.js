@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 //   await client.connect();
 const client = new MongoClient(process.env.DB_URI);
     await client.connect();
-    const db = client.db('nextAuth');
+    const db = client.db('IdeaNex');
 
     const { id } = req.query;
   try {

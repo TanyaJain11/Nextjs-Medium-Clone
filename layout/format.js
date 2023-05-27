@@ -4,7 +4,7 @@ import Footer from '../components/footer'
 import Header from '../components/header'
 import { SessionProvider } from "next-auth/react";
 
-const format = ({children}) => {
+const Format = ({children}) => {
   return (
     <>
      <SessionProvider>
@@ -20,4 +20,4 @@ const format = ({children}) => {
   )
 }
 
-export default format
+export default Format
