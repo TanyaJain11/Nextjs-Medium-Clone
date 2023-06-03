@@ -9,7 +9,7 @@ const Format = ({children}) => {
     <>
      <SessionProvider>
     <Head>
-        <title>Blog</title>
+        <title>IdeaNex</title>
     </Head>
       <Header></Header>
       
