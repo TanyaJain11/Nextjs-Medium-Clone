@@ -114,7 +114,7 @@ export default function Section1() {
         <Swiper
           slidesPerView={1}
           autoplay={{
-            delay: 1000
+            delay: 2000
           }}
         >
           {data.map((value, index) => (

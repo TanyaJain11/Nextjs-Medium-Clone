@@ -179,7 +179,7 @@ export default function Section4() {
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1">
           <div className="item">
             <h1 className="font-bold text-4xl py-12">
               {selectedCategory === 'All' ? 'Popular Blogs' : `Popular ${selectedCategory} Blogs`}

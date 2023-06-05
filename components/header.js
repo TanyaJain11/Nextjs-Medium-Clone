@@ -115,12 +115,12 @@ export default function Header() {
           </div>
           <div className="w-96 order-3 flex justify-center">
             <div className="flex gap-6">
-              <img
+              {/* <img
                 src="/images/author/836.jpg"
                 width={60}
                 height={60}
                 className="rounded-full"
-              />
+              /> */}
               {data?.user ? (
                 <>
                   <span style={{ marginRight: '15px' }} className="pt-4">

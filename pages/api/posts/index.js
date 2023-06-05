@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const db = client.db('IdeaNex'); // Replace 'DB_NAME' with your actual database name
 
     // Access the "trendingBlogs" collection
-    const collection = db.collection('blogs');
+    const collection = db.collection('latestBlog');
 
     // Fetch the trending posts
     const Blogs = await collection.find({}).toArray();
